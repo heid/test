@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<net>
+		<NetPeriod>1000</NetPeriod>
+		<Port>8888</Port>
+	</net>
+	<image>
+		<X>1920</X>
+		<Y>1080</Y>
+		<FramePeriod>100</FramePeriod>
+	</image>
+</config>
