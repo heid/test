@@ -46,8 +46,8 @@ void Client::onReadyRead() {
             onDataRead(m_DataReceiveTimer.nsecsElapsed());
 
             SaveImageThread *thread = new SaveImageThread(image, QString("%1.jpg")
-                                                          .arg(counter++));
-            connect(thread, &SaveImageThread::done, thread, &SaveImageThread::deleteLater);
+                                                          .arg(counter++), this);
+            connect(thread, &SaveImageThread::finished, thread, &SaveImageThread::deleteLater);
             thread->start();
 
             QImage scaledImage = image.scaled(ui->lblImage->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
@@ -81,16 +81,16 @@ void Client::on_btnConnect_clicked() {
     if (ui->btnConnect->text() == "Connect") {
         m_socket->connectToHost(ui->leIP->text(), ui->lePort->text().toInt());
 
-        if (m_socket->error()) {
+        /*if (m_socket->error()) {
             qDebug() << QString("SocketState: %1, SocketError: %2 - %3")
                         .arg(m_socket->state())
                         .arg(m_socket->error())
                         .arg(m_socket->errorString());
 
             return;
-        }
+        }*/
 
-        qDebug() << "Connected to host." << QAbstractSocket::SocketError();
+        qDebug() << "Connected to host.";
 
         ui->btnConnect->setText("Disconnect");
     } else {

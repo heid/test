@@ -13,9 +13,6 @@ public:
 
     void run();
 
-signals:
-    void done();
-
 private:
     QImage m_image;
     QString m_fileName;

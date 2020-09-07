@@ -11,7 +11,5 @@ void SaveImageThread::run() {
         qDebug() << "Image " + m_fileName + " saved!";
     } else {
         qDebug() << "Image not saved!";
-    }
-
-    emit done();
+    }   
 }
